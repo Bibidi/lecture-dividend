@@ -1,0 +1,10 @@
+### Add Company
+POST localhost:8080/company
+Content-Type: application/json
+
+{
+  "ticker": "O"
+}
+
+### Search Company
+GET localhost:8080/company?ticker="O"
