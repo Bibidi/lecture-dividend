@@ -4,7 +4,7 @@ POST localhost:8080/company
 Content-Type: application/json
 
 {
-  "ticker": "INTC"
+  "ticker": "MMM"
 }
 
 ### Search Company
