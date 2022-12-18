@@ -1,5 +1,6 @@
 package com.example.lecturediviend.service;
 
+import com.example.lecturediviend.exception.impl.NoCompanyException;
 import com.example.lecturediviend.model.Company;
 import com.example.lecturediviend.model.ScrapedResult;
 import com.example.lecturediviend.persist.CompanyRepository;
@@ -74,7 +75,18 @@ public class CompanyService {
         return (List<String>) trie.prefixMap(keyword).keySet().stream().collect(Collectors.toList());
     }
 
-    public void deleteAutocompleteKeyword(String keyword) {
+    public void deleteAutoCompleteKeyword(String keyword) {
         trie.remove(keyword);
+    }
+
+    public String deleteCompany(String ticker) {
+        CompanyEntity companyEntity = companyRepository.findByTicker(ticker)
+                .orElseThrow(() -> new NoCompanyException());
+
+        dividendRepository.deleteAllByCompanyId(companyEntity.getId());
+        companyRepository.delete(companyEntity);
+
+        deleteAutoCompleteKeyword(companyEntity.getName());
+        return companyEntity.getName();
     }
 }

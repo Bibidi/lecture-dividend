@@ -2,16 +2,22 @@
 ### 회사 ticker : MMM, NKE, QQQ, SPY, T, IBM, INTC, AAPL // 이거 자동화해야 된다.
 POST localhost:8080/company
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncmFjZSIsInJvbGVzIjpbIlJPTEVfUkVBRCIsIlJPTEVfV1JJVEUiXSwiaWF0IjoxNjcxMzM3MDU2LCJleHAiOjE2NzEzNDA2NTZ9.Q4TJHW1HWlDrzdtwuCR_a1dPtXpXv-H_kKDjhNPjDmXPlMRuj-oisCEYwBCmQbN4aG9YUPgaFK1QCQ0NZviZmw
 
 {
   "ticker": "MMM"
 }
 
 ### Search Company
-GET localhost:8080/company?ticker="O"
+GET localhost:8080/company?ticker="MMM"
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncmFjZSIsInJvbGVzIjpbIlJPTEVfUkVBRCIsIlJPTEVfV1JJVEUiXSwiaWF0IjoxNjcxMzMzNDQ2LCJleHAiOjE2NzEzMzcwNDZ9.gikBFatlllRhtpNwT3ZjX5eLUaAsZvaoy8QX835ArFT2i7Pi2awGDys3x6IA7MHCLNmjSdQEu2s1O2hxzLHGvQ
 
 ### Search All Company
-GET localhost:8080/company
+GET localhost:8080/company?size=5&page=1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncmFjZSIsInJvbGVzIjpbIlJPTEVfUkVBRCJdLCJpYXQiOjE2NzEzMjgwODgsImV4cCI6MTY3MTMzMTY4OH0.oq7KSjB6OnStdSVje8x-TybfCYL7QrnsecJ6zscoCBuicNu_JeFXyKWWjAuXW-k_HL8dhpp1puP-m6xygepDRA
 
 ### Company Autocomplete
 GET localhost:8080/company/autocomplete?keyword=I
+
+### Delete Company
+DELETE localhost:8080/company/MMM
